@@ -24,4 +24,11 @@ Test Cases Handled:
 4) If we have more than one buy order with same price, the buy order which placed first will be considered
 5) If we have more than one sell order with same price, the sell order which placed first will be considered
 6) If the orders are matched, corresponding id's will be removed from the orderBook
-   
+
+Sample output from local run for given input:
+   +--------+----------------+-----------------+-------------+-----+
+|order_id|matched_order_id|order_placed_time|sell_quantity|price|
++--------+----------------+-----------------+-------------+-----+
+|       5|               1|       1623239774|           72| 1550|
+|      12|              10|       1623239781|           89| 7596|
++--------+----------------+-----------------+-------------+-----+
