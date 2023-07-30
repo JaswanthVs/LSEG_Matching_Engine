@@ -1,17 +1,18 @@
 # LSEG_Matching_Engine
 Configuration Used:
 System: Windows
-IDE: Intellij IDE
+IDE: IntelliJ IDE
 Spark: 3.3.1
 Scala: 2.13.10
 
 
 Approach followed:
-1) Splitted input data file in to BUY and SELL orders to identify a match
-2) Only relevant ids which we require further will be picked from order book and proceed to next step
-3) Rank buy and sell data as per the price [buy asc, sell desc]
-4) Final orders will be matched through quantity as we already shrinked the data and picked qualified data for join
-5) Order Placed Id's are removed from input order book
+1) Process Reads the Input file and split it into two Data Frames by TYPES [SELL/ORDER]
+2) Splitted data frames are joined to check if we have any matching orders in the current Iteration
+3) If we have found any matches, matching ids will be picked from joined DF to shrink Huge Data and to process things Faster
+4) Picked Matching Ids are used to select from initial splitted [Buy/Sell DF's] and ranked based on requirement [Buy-ASC,SELL-DESC] using WINODOW Partitioning
+5) Final orders will be matched through quantity as we already identified which order to process first based on rank
+6) Order Placed Id's are removed from the input order book which can be utilised for next run if it is streaming
 
 
 Test Cases Handled:
